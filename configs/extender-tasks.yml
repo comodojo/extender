@@ -1,0 +1,6 @@
+---
+TestTask:
+    package: null,
+    data:
+        description: TestTask
+        class: Comodojo\Extender\Task\TestTask

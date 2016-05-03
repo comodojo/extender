@@ -1,0 +1,7 @@
+---
+TestPlugin:
+  package: null
+  data:
+    event: extender
+    class: Comodojo\Extender\Plugin\TestPlugin
+    method: ready

@@ -1,0 +1,42 @@
+{
+    "name": "comodojo/extender",
+    "description": "Composer project template for comodojo/extender.framework",
+    "license": "GPL-3.0+",
+    "type": "project",
+    "keywords": [
+        "cron",
+        "tasks",
+        "database",
+        "comodojo",
+        "installer",
+        "multiprocess",
+        "scheduler",
+        "pseudocron"
+    ],
+    "homepage": "https://extender.comodojo.org",
+     "support": {
+        "issues": "https://github.com/comodojo/extender.project/issues"
+    },
+    "authors": [
+        {
+            "name": "Marco Giovinazzi",
+            "email": "marco.giovinazzi@comodojo.org",
+            "homepage": "http://jme.altervista.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Comodojo\\Extender\\Task\\": "tasks",
+            "Comodojo\\Extender\\Plugin\\": "plugins",
+            "Comodojo\\Extender\\Command\\": "commands"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.0",
+        "comodojo/extender-installer" : "dev-master",
+        "mustangostang/spyc": "0.5.*",
+        "comodojo/extender.framework": "dev-master",
+        "comodojo/extender.commandsbundle.default": "^1.0"
+    }
+}
