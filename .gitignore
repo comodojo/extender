@@ -1,6 +1,17 @@
-composer.phar
-/vendor/
-
-# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+vendor/
+composer.lock
+build/
+config/*
+!config/cli-config.php
+cache/*
+!cache/.placeholder
+database/*
+!database/.placeholder
+logs/*
+!logs/.placeholder
+proxies/*
+!proxies/.placeholder
+public/download/*
+!public/download/.placeholder
+run/*
+!run/.placeholder

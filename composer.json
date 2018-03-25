@@ -1,7 +1,7 @@
 {
     "name": "comodojo/extender",
     "description": "Composer project template for comodojo/extender.framework",
-    "license": "GPL-3.0+",
+    "licelicense": "MIT",
     "type": "project",
     "keywords": [
         "cron",
@@ -14,7 +14,7 @@
         "pseudocron"
     ],
     "homepage": "https://extender.comodojo.org",
-     "support": {
+    "support": {
         "issues": "https://github.com/comodojo/extender.project/issues"
     },
     "authors": [
@@ -26,17 +26,101 @@
     ],
     "autoload": {
         "psr-4": {
-            "Comodojo\\Extender\\Task\\": "tasks",
-            "Comodojo\\Extender\\Plugin\\": "plugins",
-            "Comodojo\\Extender\\Command\\": "commands"
+            "Comodojo\\Extender\\Tasks\\": "tasks",
+            "Comodojo\\Extender\\Plugins\\": "plugins",
+            "Comodojo\\Extender\\Commands\\": "commands"
         }
     },
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.0",
-        "comodojo/extender-installer" : "dev-master",
-        "mustangostang/spyc": "0.5.*",
-        "comodojo/extender.framework": "dev-master",
-        "comodojo/extender.commandsbundle.default": "^1.0"
+        "comodojo/comodojo-installer" : "dev-master",
+        "comodojo/extender.framework": "dev-master"
+    },
+    "extra": {
+        "comodojo-installer": {
+            "package-types": [
+                "comodojo-bundle"
+            ],
+            "global-config": {
+                "extra-field": "comodojo-configuration",
+                "persistence": "\\Comodojo\\Installer\\Persistence\\YamlPersistence",
+                "params": {
+                    "config-file": "config/comodojo-configuration.yml",
+                    "depth": 6
+                }
+            },
+            "package-extra": {
+                "routes": {
+                    "driver": "\\Comodojo\\Installer\\Drivers\\RouteDriver",
+                    "persistence": "\\Comodojo\\Installer\\Persistence\\YamlPersistence",
+                    "params": {
+                        "config-file": "config/comodojo-routes.yml"
+                    }
+                },
+                "plugins": {
+                    "driver": "\\Comodojo\\Installer\\Drivers\\PluginDriver",
+                    "persistence": "\\Comodojo\\Installer\\Persistence\\YamlPersistence",
+                    "params": {
+                        "config-file": "config/comodojo-plugins.yml"
+                    }
+                },
+                "tasks": {
+                    "driver": "\\Comodojo\\Installer\\Drivers\\TaskDriver",
+                    "persistence": "\\Comodojo\\Installer\\Persistence\\YamlPersistence",
+                    "params": {
+                        "config-file": "config/comodojo-tasks.yml"
+                    }
+                }
+            }
+        },
+        "comodojo-configuration": {
+            "static-config": "config",
+            "enabled": true,
+            "encoding": "UTF-8",
+            "routing-table-cache": true,
+            "routing-table-ttl": 86400,
+            "log": {
+                "enable": true,
+                "name": "extender",
+                "providers": {
+                    "local" : {
+                        "type": "StreamHandler",
+                        "level": "info",
+                        "stream": "logs/extender.log"
+                    }
+                }
+            },
+            "cache": {
+                "enable": true,
+                "pick_mode": "PICK_FIRST",
+                "providers": {
+                    "local": {
+                        "type": "Filesystem",
+                        "cache_folder": "cache"
+                    }
+                }
+            },
+            "database-params": {
+                "dbname" : "extender" ,
+                "user" : "extender" ,
+                "password" : "stewie" ,
+                "path" : "database/extender" ,
+                "driver" : "pdo_sqlite"
+            },
+            "database-proxies": "proxies",
+            "database-devmode": false,
+            "database-repositories": [
+                "vendor/comodojo/extender.framework/src/Comodojo/Extender/Orm/Entities"
+            ],
+            "database-metadata": "ANNOTATIONS",
+            "child-lagger-timeout": 10,
+            "multithread": true,
+            "child-max-runtime": 600,
+            "child-max-result-bytes": 16384,
+            "fork-limit": 50,
+            "run-path": "run",
+            "sockethandler": "tcp://127.0.0.1:11042"
+        }
     }
 }
