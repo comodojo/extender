@@ -1,7 +1,7 @@
 {
     "name": "comodojo/extender",
     "description": "Composer project template for comodojo/extender.framework",
-    "licelicense": "MIT",
+    "license": "MIT",
     "type": "project",
     "keywords": [
         "cron",
@@ -35,7 +35,8 @@
     "require": {
         "php": ">=5.6.0",
         "comodojo/comodojo-installer" : "dev-master",
-        "comodojo/extender.framework": "dev-master"
+        "comodojo/extender.framework": "dev-master",
+        "comodojo/extender-bundle": "dev-master"
     },
     "extra": {
         "comodojo-installer": {
@@ -70,6 +71,13 @@
                     "persistence": "\\Comodojo\\Installer\\Persistence\\YamlPersistence",
                     "params": {
                         "config-file": "config/comodojo-tasks.yml"
+                    }
+                },
+                "commands": {
+                    "driver": "\\Comodojo\\Installer\\Drivers\\CommandDriver",
+                    "persistence": "\\Comodojo\\Installer\\Persistence\\YamlPersistence",
+                    "params": {
+                        "config-file": "config/comodojo-commands.yml"
                     }
                 }
             }
