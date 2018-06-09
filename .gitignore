@@ -15,3 +15,5 @@ public/download/*
 !public/download/.placeholder
 run/*
 !run/.placeholder
+tasks/*
+!tasks/.placeholder
